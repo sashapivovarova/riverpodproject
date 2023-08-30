@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,38 +26,22 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Toast Message'),
-      ),
-      body: Center(
-        child: TextButton(
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(
-              Colors.pink,
-            ),
+      backgroundColor: Colors.pink,
+      body: SafeArea(
+        child: Container(
+          width: 100,
+          height: 100,
+          margin: const EdgeInsets.symmetric(
+            vertical: 50,
+            horizontal: 10,
           ),
-          onPressed: () {
-            flutterToast();
-          },
-          child: const Text(
-            'Click',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+          padding: const EdgeInsets.all(
+            40,
           ),
+          color: Colors.white,
+          child: const Text('Container'),
         ),
       ),
     );
   }
-}
-
-void flutterToast() {
-  Fluttertoast.showToast(
-    msg: 'Thank you ❤️',
-    gravity: ToastGravity.BOTTOM,
-    backgroundColor: Colors.teal,
-    fontSize: 20,
-    textColor: Colors.white,
-    toastLength: Toast.LENGTH_SHORT,
-  );
 }
