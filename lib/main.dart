@@ -28,98 +28,33 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Appbar icon menu',
+          'Snack Bar',
         ),
-        centerTitle: true,
-        elevation: 0,
-        actions: [
-          IconButton(
-            onPressed: () {
-              print('search button is clicked');
-            },
-            icon: const Icon(
-              Icons.search_rounded,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              print('shopping button is clicked');
-            },
-            icon: const Icon(
-              Icons.shopping_cart_rounded,
-            ),
-          ),
-        ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: const Text('sasha'),
-              accountEmail: const Text('abc@efg.xyz'),
-              onDetailsPressed: () {
-                print('clicked');
-              },
-              decoration: BoxDecoration(
-                color: Colors.pink[300],
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
+      body: Builder(
+        builder: (context) {
+          return Center(
+            child: TextButton(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(
+                  Colors.pink,
                 ),
               ),
-              currentAccountPicture: const CircleAvatar(
-                backgroundImage: AssetImage('assets/eunsol.png'),
-                backgroundColor: Colors.transparent,
-              ),
-              otherAccountsPictures: const [
-                CircleAvatar(
-                  backgroundImage: AssetImage('assets/him.png'),
-                  backgroundColor: Colors.transparent,
+              onPressed: () {
+                const snackBar = SnackBar(
+                  content: Text('Hello'),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              child: const Text(
+                'Show me',
+                style: TextStyle(
+                  color: Colors.white,
                 ),
-              ],
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.home,
-                color: Colors.black,
-              ),
-              title: const Text('Home'),
-              onTap: () {
-                print('Home is Clicked');
-              },
-              trailing: const Icon(
-                Icons.add,
               ),
             ),
-            ListTile(
-              leading: const Icon(
-                Icons.settings,
-                color: Colors.black,
-              ),
-              title: const Text('Settings'),
-              onTap: () {
-                print('Settings is Clicked');
-              },
-              trailing: const Icon(
-                Icons.add,
-              ),
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.question_answer_rounded,
-                color: Colors.black,
-              ),
-              title: const Text('Q&A'),
-              onTap: () {
-                print('Q&A is Clicked');
-              },
-              trailing: const Icon(
-                Icons.add,
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
