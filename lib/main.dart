@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final helloWorldProvider = Provider((_) => 'Hello world');
+final myProvider = Provider((ref) {
+  return MyValue();
+});
+
+void MyValue() {}
 
 void main() {
   runApp(
