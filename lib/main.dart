@@ -72,7 +72,52 @@ class MyPage extends StatelessWidget {
                 backgroundImage: AssetImage('assets/eunsol.png'),
                 backgroundColor: Colors.transparent,
               ),
-            )
+              otherAccountsPictures: const [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/him.png'),
+                  backgroundColor: Colors.transparent,
+                ),
+              ],
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              title: const Text('Home'),
+              onTap: () {
+                print('Home is Clicked');
+              },
+              trailing: const Icon(
+                Icons.add,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              title: const Text('Settings'),
+              onTap: () {
+                print('Settings is Clicked');
+              },
+              trailing: const Icon(
+                Icons.add,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.question_answer_rounded,
+                color: Colors.black,
+              ),
+              title: const Text('Q&A'),
+              onTap: () {
+                print('Q&A is Clicked');
+              },
+              trailing: const Icon(
+                Icons.add,
+              ),
+            ),
           ],
         ),
       ),
