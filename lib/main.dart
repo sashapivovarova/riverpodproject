@@ -31,30 +31,35 @@ class MyPage extends StatelessWidget {
           'Snack Bar',
         ),
       ),
-      body: Builder(
-        builder: (context) {
-          return Center(
-            child: TextButton(
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(
-                  Colors.pink,
-                ),
-              ),
-              onPressed: () {
-                const snackBar = SnackBar(
-                  content: Text('Hello'),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
-              child: const Text(
-                'Show me',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+      body: const MySnackBar(),
+    );
+  }
+}
+
+class MySnackBar extends StatelessWidget {
+  const MySnackBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: TextButton(
+        style: const ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(
+            Colors.pink,
+          ),
+        ),
+        onPressed: () {
+          const snackBar = SnackBar(
+            content: Text('Hello'),
           );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
+        child: const Text(
+          'Show me',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
