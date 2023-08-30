@@ -50,7 +50,14 @@ class MySnackBar extends StatelessWidget {
         ),
         onPressed: () {
           const snackBar = SnackBar(
-            content: Text('Hello'),
+            backgroundColor: Colors.teal,
+            duration: Duration(
+              milliseconds: 2000,
+            ),
+            content: Text(
+              'Thank you ❤️',
+              textAlign: TextAlign.center,
+            ),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
