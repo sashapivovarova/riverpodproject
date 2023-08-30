@@ -28,7 +28,7 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.pink,
       body: SafeArea(
-        child: Column(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
