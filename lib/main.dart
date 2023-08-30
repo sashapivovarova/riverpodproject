@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Appbar',
+      title: 'Toast Message',
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
@@ -27,47 +28,37 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Snack Bar',
+        title: const Text('Toast Message'),
+      ),
+      body: Center(
+        child: TextButton(
+          style: const ButtonStyle(
+            backgroundColor: MaterialStatePropertyAll(
+              Colors.pink,
+            ),
+          ),
+          onPressed: () {
+            flutterToast();
+          },
+          child: const Text(
+            'Click',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
-      body: const MySnackBar(),
     );
   }
 }
 
-class MySnackBar extends StatelessWidget {
-  const MySnackBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: TextButton(
-        style: const ButtonStyle(
-          backgroundColor: MaterialStatePropertyAll(
-            Colors.pink,
-          ),
-        ),
-        onPressed: () {
-          const snackBar = SnackBar(
-            backgroundColor: Colors.teal,
-            duration: Duration(
-              milliseconds: 2000,
-            ),
-            content: Text(
-              'Thank you ❤️',
-              textAlign: TextAlign.center,
-            ),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        },
-        child: const Text(
-          'Show me',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
+void flutterToast() {
+  Fluttertoast.showToast(
+    msg: 'Thank you ❤️',
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: Colors.teal,
+    fontSize: 20,
+    textColor: Colors.white,
+    toastLength: Toast.LENGTH_SHORT,
+  );
 }
