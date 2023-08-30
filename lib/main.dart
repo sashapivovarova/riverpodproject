@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Appbar',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
       ),
       home: const MyPage(),
     );
@@ -32,14 +32,6 @@ class MyPage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            print('menu button is clicked');
-          },
-          icon: const Icon(
-            Icons.menu,
-          ),
-        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -58,6 +50,31 @@ class MyPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: const Text('sasha'),
+              accountEmail: const Text('abc@efg.xyz'),
+              onDetailsPressed: () {
+                print('clicked');
+              },
+              decoration: BoxDecoration(
+                color: Colors.pink[300],
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
+                ),
+              ),
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: AssetImage('assets/eunsol.png'),
+                backgroundColor: Colors.transparent,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
