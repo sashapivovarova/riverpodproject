@@ -28,18 +28,29 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.pink,
       body: SafeArea(
-        child: Container(
-          width: 100,
-          height: 100,
-          margin: const EdgeInsets.symmetric(
-            vertical: 50,
-            horizontal: 10,
-          ),
-          padding: const EdgeInsets.all(
-            40,
-          ),
-          color: Colors.white,
-          child: const Text('Container'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.white,
+              child: const Text('Container 1'),
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+              child: const Text('Container 2'),
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+              child: const Text('Container 3'),
+            ),
+          ],
         ),
       ),
     );
