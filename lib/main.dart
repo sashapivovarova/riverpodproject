@@ -11,11 +11,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Toast Message',
+      title: 'Navigator',
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const MyPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MyPage(),
+        '/second': (context) => const SecondPage(),
+        '/third': (context) => const ThirdPage(),
+      },
     );
   }
 }
@@ -27,30 +32,25 @@ class MyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('First Page'),
-      ),
-      body: Center(
-        child: TextButton(
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(
-              Colors.pink,
+        title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/second');
+            },
+            icon: const Icon(
+              Icons.search_rounded,
             ),
           ),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const SecondPage();
-                },
-              ),
-            );
-          },
-          child: const Text(
-            'Go to the second page',
-            style: TextStyle(color: Colors.white),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/third');
+            },
+            icon: const Icon(
+              Icons.shopping_cart_outlined,
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -63,23 +63,56 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Second Page'),
-      ),
-      body: Center(
-        child: TextButton(
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(
-              Colors.pink,
+        title: const Text('Search'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            icon: const Icon(
+              Icons.home_outlined,
             ),
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            'Go to the first page',
-            style: TextStyle(color: Colors.white),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/third');
+            },
+            icon: const Icon(
+              Icons.shopping_cart_outlined,
+            ),
           ),
-        ),
+        ],
+      ),
+    );
+  }
+}
+
+class ThirdPage extends StatelessWidget {
+  const ThirdPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Shopping cart'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/');
+            },
+            icon: const Icon(
+              Icons.home_outlined,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/second');
+            },
+            icon: const Icon(
+              Icons.search_rounded,
+            ),
+          ),
+        ],
       ),
     );
   }
