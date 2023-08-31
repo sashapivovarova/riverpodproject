@@ -33,25 +33,85 @@ class OnBoardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
-      done: const Text('Done'),
+      showSkipButton: true,
+      skip: const Text(
+        'Skip',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      onSkip: () {
+        Navigator.pushNamed(context, '/home');
+      },
+      done: const Text(
+        'Start',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
       onDone: () {
         Navigator.pushNamed(context, '/home');
       },
-      next: const Icon(Icons.arrow_forward),
+      next: const Text(
+        'Next',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      dotsContainerDecorator: const BoxDecoration(
+        color: Colors.black,
+      ),
+      dotsDecorator: DotsDecorator(
+        color: Colors.white,
+        activeColor: Colors.pink,
+        activeSize: const Size(
+          30,
+          10,
+        ),
+        activeShape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            30,
+          ),
+        ),
+      ),
       pages: [
         PageViewModel(
           title: 'Home',
           body: 'You can look everyting',
+          image: Image.asset('assets/eunsol.png'),
+          decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Search',
           body: 'You can search everyting',
+          image: Image.asset('assets/him.png'),
+          decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Shopping card',
           body: 'You can buy everyting',
+          image: Image.asset('assets/heart.png'),
+          decoration: getPageDecoration(),
         ),
       ],
+    );
+  }
+
+  PageDecoration getPageDecoration() {
+    return const PageDecoration(
+      titleTextStyle: TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+      bodyTextStyle: TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+      ),
+      imagePadding: EdgeInsets.only(
+        top: 40,
+      ),
+      pageColor: Colors.black,
     );
   }
 }
@@ -86,6 +146,7 @@ class MyPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
               'Main Screen',
