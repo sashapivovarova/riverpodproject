@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +18,40 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyPage(),
+        '/': (context) => const OnBoardingPage(),
+        '/home': (context) => const MyPage(),
         '/second': (context) => const SecondPage(),
         '/third': (context) => const ThirdPage(),
       },
+    );
+  }
+}
+
+class OnBoardingPage extends StatelessWidget {
+  const OnBoardingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IntroductionScreen(
+      done: const Text('Done'),
+      onDone: () {
+        Navigator.pushNamed(context, '/home');
+      },
+      next: const Icon(Icons.arrow_forward),
+      pages: [
+        PageViewModel(
+          title: 'Home',
+          body: 'You can look everyting',
+        ),
+        PageViewModel(
+          title: 'Search',
+          body: 'You can search everyting',
+        ),
+        PageViewModel(
+          title: 'Shopping card',
+          body: 'You can buy everyting',
+        ),
+      ],
     );
   }
 }
@@ -53,6 +84,24 @@ class MyPage extends StatelessWidget {
           ),
         ],
       ),
+      body: Center(
+        child: Column(
+          children: [
+            const Text(
+              'Main Screen',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text('Go to onboarding screen.'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -69,7 +118,7 @@ class SecondPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/home');
             },
             icon: const Icon(
               Icons.home_outlined,
@@ -101,7 +150,7 @@ class ThirdPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/home');
             },
             icon: const Icon(
               Icons.home_outlined,
