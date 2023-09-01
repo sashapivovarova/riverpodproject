@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:riverpodproject/model/model.dart';
+import 'package:like_button/like_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -173,6 +174,9 @@ class _MyPageState extends State<MyPage> {
     ),
   );
 
+  bool isLiked = false;
+  int likeCount = 0;
+
   void showPopup(context, title, image, description) {
     showDialog(
         context: context,
@@ -180,7 +184,7 @@ class _MyPageState extends State<MyPage> {
           return Dialog(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
-              height: 400,
+              height: 450,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
@@ -212,6 +216,14 @@ class _MyPageState extends State<MyPage> {
                       ),
                       textAlign: TextAlign.center,
                     ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  LikeButton(
+                    size: 30,
+                    isLiked: isLiked,
+                    likeCount: likeCount,
                   ),
                   const SizedBox(
                     height: 30,
