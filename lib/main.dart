@@ -78,19 +78,19 @@ class OnBoardingPage extends StatelessWidget {
         PageViewModel(
           title: 'Home',
           body: 'You can look everyting',
-          image: Image.asset('assets/eunsol.png'),
+          image: Image.asset('assets/7.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Search',
           body: 'You can search everyting',
-          image: Image.asset('assets/him.png'),
+          image: Image.asset('assets/8.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Shopping card',
           body: 'You can buy everyting',
-          image: Image.asset('assets/heart.png'),
+          image: Image.asset('assets/9.png'),
           decoration: getPageDecoration(),
         ),
       ],
@@ -116,8 +116,52 @@ class OnBoardingPage extends StatelessWidget {
   }
 }
 
-class MyPage extends StatelessWidget {
+class MyPage extends StatefulWidget {
   const MyPage({super.key});
+
+  @override
+  State<MyPage> createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  var titleList = [
+    'Vitamin A',
+    'Vitamin B',
+    'Vitamin C',
+    'Vitamin D',
+    'Calcium',
+    'Magnesium',
+    'Folate',
+    'Mineral',
+    'Iron',
+    'Probiotic'
+  ];
+
+  var imigeList = [
+    'assets/1.png',
+    'assets/2.png',
+    'assets/3.png',
+    'assets/4.png',
+    'assets/5.png',
+    'assets/6.png',
+    'assets/7.png',
+    'assets/8.png',
+    'assets/9.png',
+    'assets/10.png',
+  ];
+
+  var description = [
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need.',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -144,24 +188,23 @@ class MyPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Main Screen',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-              ),
+      body: ListView.builder(
+        itemCount: titleList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: Image.asset(
+                    imigeList[index],
+                  ),
+                ),
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/');
-              },
-              child: const Text('Go to onboarding screen.'),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
