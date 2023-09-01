@@ -78,19 +78,19 @@ class OnBoardingPage extends StatelessWidget {
         PageViewModel(
           title: 'Home',
           body: 'You can look everyting',
-          image: Image.asset('assets/7.png'),
+          image: Image.asset('assets/11.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Search',
           body: 'You can search everyting',
-          image: Image.asset('assets/8.png'),
+          image: Image.asset('assets/12.png'),
           decoration: getPageDecoration(),
         ),
         PageViewModel(
           title: 'Shopping card',
           body: 'You can buy everyting',
-          image: Image.asset('assets/9.png'),
+          image: Image.asset('assets/13.png'),
           decoration: getPageDecoration(),
         ),
       ],
@@ -199,6 +199,25 @@ class _MyPageState extends State<MyPage> {
                   height: 100,
                   child: Image.asset(
                     imigeList[index],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(
+                    10,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        titleList[index],
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ],
