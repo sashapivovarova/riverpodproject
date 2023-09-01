@@ -11,7 +11,7 @@ class OnBoardingPage extends StatelessWidget {
       skip: const Text(
         'Skip',
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.pink,
         ),
       ),
       onSkip: () {
@@ -20,7 +20,7 @@ class OnBoardingPage extends StatelessWidget {
       done: const Text(
         'Start',
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.pink,
         ),
       ),
       onDone: () {
@@ -29,7 +29,7 @@ class OnBoardingPage extends StatelessWidget {
       next: const Text(
         'Next',
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.pink,
         ),
       ),
       dotsContainerDecorator: const BoxDecoration(
@@ -76,11 +76,11 @@ class OnBoardingPage extends StatelessWidget {
       titleTextStyle: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold,
-        color: Colors.white,
+        color: Colors.pink,
       ),
       bodyTextStyle: TextStyle(
         fontSize: 18,
-        color: Colors.white,
+        color: Colors.pink,
       ),
       imagePadding: EdgeInsets.only(
         top: 40,
