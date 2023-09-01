@@ -233,7 +233,15 @@ class _MyPageState extends State<MyPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const SecondPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
             },
             icon: const Icon(
               Icons.search_rounded,
@@ -241,7 +249,15 @@ class _MyPageState extends State<MyPage> {
           ),
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/third');
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ThirdPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
             },
             icon: const Icon(
               Icons.shopping_cart_outlined,
@@ -320,18 +336,34 @@ class SecondPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Search'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation1, animation2) =>
+                    const MyPage(),
+                transitionDuration: Duration.zero,
+                reverseTransitionDuration: Duration.zero,
+              ),
+            );
+          },
+          icon: const Icon(
+            Icons.home_outlined,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/home');
-            },
-            icon: const Icon(
-              Icons.home_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/third');
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ThirdPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
             },
             icon: const Icon(
               Icons.shopping_cart_outlined,
@@ -352,18 +384,34 @@ class ThirdPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Shopping cart'),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation1, animation2) =>
+                    const MyPage(),
+                transitionDuration: Duration.zero,
+                reverseTransitionDuration: Duration.zero,
+              ),
+            );
+          },
+          icon: const Icon(
+            Icons.home_outlined,
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/home');
-            },
-            icon: const Icon(
-              Icons.home_outlined,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/second');
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const SecondPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
             },
             icon: const Icon(
               Icons.search_rounded,
