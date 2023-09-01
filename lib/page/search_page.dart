@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
+import 'package:riverpodproject/responsive/desktop_body.dart';
+import 'package:riverpodproject/responsive/mobile_body.dart';
+import 'package:riverpodproject/responsive/respoinsive_layout.dart';
 import 'shopping_page.dart';
 
-class SecondPage extends StatelessWidget {
+class SecondPage extends StatefulWidget {
   const SecondPage({super.key});
 
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+
+class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         automaticallyImplyLeading: false,
         title: const Text('Search'),
         leading: IconButton(
@@ -45,6 +54,10 @@ class SecondPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      body: const ResponsiveLayout(
+        mobileBody: MobileBody(),
+        desktopBody: DesktopBody(),
       ),
     );
   }
