@@ -137,7 +137,7 @@ class _MyPageState extends State<MyPage> {
     'Probiotic'
   ];
 
-  var imigeList = [
+  var imageList = [
     'assets/1.png',
     'assets/2.png',
     'assets/3.png',
@@ -151,20 +151,81 @@ class _MyPageState extends State<MyPage> {
   ];
 
   var description = [
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
-    'It\'s a nutrient we really need.',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
+    'It\'s a nutrient we really need. Feel the difference in your body day by day!',
   ];
+
+  void showPopup(context, title, image, description) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              height: 400,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    child: Image.asset(
+                      image,
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      description,
+                      maxLines: 3,
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: const ButtonStyle(
+                        iconColor: MaterialStatePropertyAll(
+                      Colors.pink,
+                    )),
+                    child: const Text('Close'),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width * 0.6;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -191,36 +252,57 @@ class _MyPageState extends State<MyPage> {
       body: ListView.builder(
         itemCount: titleList.length,
         itemBuilder: (context, index) {
-          return Card(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.asset(
-                    imigeList[index],
+          return GestureDetector(
+            onTap: () {
+              showPopup(
+                context,
+                titleList[index],
+                imageList[index],
+                description[index],
+              );
+            },
+            child: Card(
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image.asset(
+                      imageList[index],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(
-                    10,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        titleList[index],
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: const EdgeInsets.all(
+                      10,
+                    ),
+                    child: Column(
+                      children: [
+                        Text(
+                          titleList[index],
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: width,
+                          child: Text(
+                            description[index],
+                            style: const TextStyle(
+                              fontSize: 15,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
