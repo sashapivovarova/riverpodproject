@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:riverpodproject/model/model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -124,7 +125,7 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  var titleList = [
+  static var nutrientName = [
     'Vitamin A',
     'Vitamin B',
     'Vitamin C',
@@ -137,7 +138,7 @@ class _MyPageState extends State<MyPage> {
     'Probiotic'
   ];
 
-  var imageList = [
+  static var nutrientImage = [
     'assets/1.png',
     'assets/2.png',
     'assets/3.png',
@@ -150,7 +151,7 @@ class _MyPageState extends State<MyPage> {
     'assets/10.png',
   ];
 
-  var description = [
+  static var nutrientDescription = [
     'It\'s a nutrient we really need. Feel the difference in your body day by day!',
     'It\'s a nutrient we really need. Feel the difference in your body day by day!',
     'It\'s a nutrient we really need. Feel the difference in your body day by day!',
@@ -162,6 +163,15 @@ class _MyPageState extends State<MyPage> {
     'It\'s a nutrient we really need. Feel the difference in your body day by day!',
     'It\'s a nutrient we really need. Feel the difference in your body day by day!',
   ];
+
+  final List<Nutrient> nutrientData = List.generate(
+    nutrientName.length,
+    (index) => Nutrient(
+      name: nutrientName[index],
+      image: nutrientImage[index],
+      description: nutrientDescription[index],
+    ),
+  );
 
   void showPopup(context, title, image, description) {
     showDialog(
@@ -266,58 +276,27 @@ class _MyPageState extends State<MyPage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: titleList.length,
+        itemCount: nutrientData.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
               showPopup(
                 context,
-                titleList[index],
-                imageList[index],
-                description[index],
+                nutrientName[index],
+                nutrientImage[index],
+                nutrientDescription[index],
               );
             },
             child: Card(
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset(
-                      imageList[index],
-                    ),
+              child: ListTile(
+                title: Text(nutrientData[index].name),
+                leading: SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset(
+                    nutrientData[index].image,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(
-                      10,
-                    ),
-                    child: Column(
-                      children: [
-                        Text(
-                          titleList[index],
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        SizedBox(
-                          width: width,
-                          child: Text(
-                            description[index],
-                            style: const TextStyle(
-                              fontSize: 15,
-                            ),
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           );
