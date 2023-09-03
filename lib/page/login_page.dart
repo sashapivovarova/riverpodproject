@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
+import 'package:riverpodproject/main.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
@@ -15,7 +16,7 @@ class _ThirdPageState extends State<ThirdPage> {
 
   void judge() {
     if (controller.text == 'dice' && controller2.text == '1234') {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushNamed(context, '/forth');
     } else {
       showSnackBar(context);
       // showDialog(
@@ -146,10 +147,11 @@ class _ThirdPageState extends State<ThirdPage> {
                         children: [
                           TextField(
                             decoration: const InputDecoration(
-                              labelText: 'Enter "Dice"',
+                              labelText: 'Enter "dice"',
                             ),
                             keyboardType: TextInputType.emailAddress,
                             controller: controller,
+                            autofocus: true,
                           ),
                           const SizedBox(
                             height: 20,
@@ -161,6 +163,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             keyboardType: TextInputType.text,
                             obscureText: true,
                             controller: controller2,
+                            autofocus: true,
                           ),
                           const SizedBox(
                             height: 40,

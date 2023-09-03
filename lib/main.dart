@@ -3,6 +3,7 @@ import 'package:riverpodproject/page/onboarding_page.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'package:riverpodproject/page/search_page.dart';
 import 'package:riverpodproject/page/login_page.dart';
+import 'package:riverpodproject/page/shopping_cart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const MyPage(),
         '/second': (context) => const SecondPage(),
         '/third': (context) => const ThirdPage(),
+        '/forth': (context) => const ForthPage(),
       },
     );
   }
