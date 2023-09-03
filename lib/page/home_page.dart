@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import 'search_page.dart';
-import 'shopping_page.dart';
+import 'login_page.dart';
 import 'package:riverpodproject/model/model.dart';
 
 class MyPage extends StatefulWidget {
