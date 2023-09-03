@@ -10,6 +10,66 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  TextEditingController controller = TextEditingController();
+  TextEditingController controller2 = TextEditingController();
+
+  void judge() {
+    if (controller.text == 'dice' && controller2.text == '1234') {
+      Navigator.pushNamed(context, '/home');
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              height: 150,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'I think the information',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  const Text(
+                    'doesn\'t match!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    style: const ButtonStyle(
+                      iconColor: MaterialStatePropertyAll(
+                        Colors.pink,
+                      ),
+                    ),
+                    child: const Text('Close'),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,27 +141,31 @@ class _ThirdPageState extends State<ThirdPage> {
                   padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        decoration: const InputDecoration(
                           labelText: 'Enter "Dice"',
                         ),
                         keyboardType: TextInputType.emailAddress,
+                        controller: controller,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        decoration: const InputDecoration(
                           labelText: 'Enter Password',
                         ),
                         keyboardType: TextInputType.text,
                         obscureText: true,
+                        controller: controller2,
                       ),
                       const SizedBox(
                         height: 40,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          judge();
+                        },
                         style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(Colors.pink),
