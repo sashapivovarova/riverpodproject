@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
-import 'package:riverpodproject/main.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
