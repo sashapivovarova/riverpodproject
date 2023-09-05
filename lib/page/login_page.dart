@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
@@ -12,64 +13,6 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPageState extends State<ThirdPage> {
   TextEditingController controller = TextEditingController();
   TextEditingController controller2 = TextEditingController();
-
-  void judge() {
-    if (controller.text == 'dice' && controller2.text == '1234') {
-      Navigator.pushNamed(context, '/forth');
-    } else {
-      showSnackBar(context);
-      // showDialog(
-      //   context: context,
-      //   builder: (context) {
-      //     return Dialog(
-      //       child: Container(
-      //         width: MediaQuery.of(context).size.width * 0.7,
-      //         height: 150,
-      //         decoration: BoxDecoration(
-      //           borderRadius: BorderRadius.circular(10),
-      //           color: Colors.white,
-      //         ),
-      //         child: Column(
-      //           children: [
-      //             const SizedBox(
-      //               height: 30,
-      //             ),
-      //             const Text(
-      //               'I think the information',
-      //               textAlign: TextAlign.center,
-      //               style: TextStyle(
-      //                 fontSize: 20,
-      //               ),
-      //             ),
-      //             const Text(
-      //               'doesn\'t match!',
-      //               textAlign: TextAlign.center,
-      //               style: TextStyle(
-      //                 fontSize: 20,
-      //               ),
-      //             ),
-      //             const SizedBox(
-      //               height: 20,
-      //             ),
-      //             TextButton(
-      //               onPressed: () {
-      //                 Navigator.pop(context);
-      //               },
-      //               style: const ButtonStyle(
-      //                 iconColor: MaterialStatePropertyAll(
-      //                   Colors.pink,
-      //                 ),
-      //               ),
-      //               child: const Text('Close'),
-      //             )
-      //           ],
-      //         ),
-      //       ),
-      //     );
-      //   },
-      // );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,86 +57,71 @@ class _ThirdPageState extends State<ThirdPage> {
       ),
       body: Builder(
         builder: (context) {
-          return GestureDetector(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(
-                      top: 50,
-                    ),
-                  ),
-                  Center(
-                    child: Image.asset(
-                      'assets/11.png',
-                      width: 170,
-                      height: 190,
-                    ),
-                  ),
-                  Form(
-                    child: Theme(
-                      data: ThemeData(
-                        primaryColor: Colors.pink,
-                        inputDecorationTheme: const InputDecorationTheme(
-                          labelStyle: TextStyle(
-                            color: Colors.pink,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.all(40),
-                        child: Column(
-                          children: [
-                            TextField(
-                              decoration: const InputDecoration(
-                                labelText: 'Enter "dice"',
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              controller: controller,
-                              autofocus: true,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            TextField(
-                              decoration: const InputDecoration(
-                                labelText: 'Enter Password',
-                              ),
-                              keyboardType: TextInputType.text,
-                              obscureText: true,
-                              controller: controller2,
-                              autofocus: true,
-                            ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                judge();
-                              },
-                              style: const ButtonStyle(
-                                backgroundColor:
-                                    MaterialStatePropertyAll(Colors.pink),
-                                iconSize: MaterialStatePropertyAll(
-                                  30,
-                                ),
-                              ),
-                              child: const Icon(
-                                Icons.arrow_forward_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  style: const ButtonStyle(
+                    fixedSize: MaterialStatePropertyAll(
+                      Size(
+                        300,
+                        50,
                       ),
                     ),
                   ),
-                ],
-              ),
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.google,
+                    size: 30,
+                  ),
+                  label: const Text(
+                    'Login with Google',
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton.icon(
+                  style: const ButtonStyle(
+                    fixedSize: MaterialStatePropertyAll(
+                      Size(
+                        300,
+                        50,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.facebook,
+                    size: 30,
+                  ),
+                  label: const Text(
+                    'Login with Facebook',
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton.icon(
+                  style: const ButtonStyle(
+                    fixedSize: MaterialStatePropertyAll(
+                      Size(
+                        300,
+                        50,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {},
+                  icon: const Icon(
+                    FontAwesomeIcons.envelope,
+                    size: 30,
+                  ),
+                  label: const Text(
+                    'Login with Email',
+                  ),
+                ),
+              ],
             ),
           );
         },
