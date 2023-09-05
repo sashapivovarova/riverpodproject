@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'home_page.dart';
 import 'search_page.dart';
-import 'package:geolocator/geolocator.dart';
 
 class FifthPage extends StatefulWidget {
   const FifthPage({super.key});
@@ -15,6 +16,7 @@ class _FifthPageState extends State<FifthPage> {
   void initState() {
     super.initState();
     getLocation();
+    fetchData();
   }
 
   void getLocation() async {
@@ -27,6 +29,14 @@ class _FifthPageState extends State<FifthPage> {
     } catch (e) {
       debugPrint('Error!');
     }
+  }
+
+  void fetchData() async {
+    const String url =
+        'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
+
+    http.Response response = await http.get(Uri.parse(url));
+    debugPrint(response.body);
   }
 
   @override
