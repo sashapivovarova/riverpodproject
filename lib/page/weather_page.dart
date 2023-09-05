@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'home_page.dart';
 import 'search_page.dart';
 
@@ -32,11 +33,20 @@ class _FifthPageState extends State<FifthPage> {
   }
 
   void fetchData() async {
-    const String url =
+    String url =
         'https://samples.openweathermap.org/data/2.5/weather?q=London&appid=b1b15e88fa797225412429c1c50c122a1';
-
     http.Response response = await http.get(Uri.parse(url));
-    debugPrint(response.body);
+
+    if (response.statusCode == 200) {
+      String jsonData = response.body;
+      var myJson = jsonDecode(jsonData)['weather'][0]['description'];
+      var myJson2 = jsonDecode(jsonData)['wind']['speed'];
+      var myJson3 = jsonDecode(jsonData)['id'];
+
+      debugPrint('$myJson');
+      debugPrint('$myJson2');
+      debugPrint('$myJson3');
+    }
   }
 
   @override
