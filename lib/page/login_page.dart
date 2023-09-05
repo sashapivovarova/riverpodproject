@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:riverpodproject/page/home_page.dart';
-import 'search_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'home_page.dart';
+import 'search_page.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});

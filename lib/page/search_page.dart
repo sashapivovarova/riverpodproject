@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:riverpodproject/page/home_page.dart';
 import 'package:riverpodproject/responsive/desktop_body.dart';
 import 'package:riverpodproject/responsive/mobile_body.dart';
 import 'package:riverpodproject/responsive/respoinsive_layout.dart';
+import 'home_page.dart';
 import 'login_page.dart';
 
 class SecondPage extends StatefulWidget {

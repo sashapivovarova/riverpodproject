@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpodproject/page/home_page.dart';
+import 'home_page.dart';
 import 'search_page.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -12,9 +12,11 @@ class FifthPage extends StatefulWidget {
 
 class _FifthPageState extends State<FifthPage> {
   void getLocation() async {
+    LocationPermission permission = await Geolocator.requestPermission();
     Position position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
+    print('$position');
   }
 
   @override
@@ -62,7 +64,9 @@ class _FifthPageState extends State<FifthPage> {
         builder: (context) {
           return Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                getLocation();
+              },
               child: const Text('Get my location'),
             ),
           );
