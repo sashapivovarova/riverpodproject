@@ -114,78 +114,85 @@ class _ThirdPageState extends State<ThirdPage> {
       ),
       body: Builder(
         builder: (context) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(
-                    top: 50,
+          return GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      top: 50,
+                    ),
                   ),
-                ),
-                Center(
-                  child: Image.asset(
-                    'assets/11.png',
-                    width: 170,
-                    height: 190,
+                  Center(
+                    child: Image.asset(
+                      'assets/11.png',
+                      width: 170,
+                      height: 190,
+                    ),
                   ),
-                ),
-                Form(
-                  child: Theme(
-                    data: ThemeData(
-                      primaryColor: Colors.pink,
-                      inputDecorationTheme: const InputDecorationTheme(
-                        labelStyle: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 15,
+                  Form(
+                    child: Theme(
+                      data: ThemeData(
+                        primaryColor: Colors.pink,
+                        inputDecorationTheme: const InputDecorationTheme(
+                          labelStyle: TextStyle(
+                            color: Colors.pink,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(40),
+                        child: Column(
+                          children: [
+                            TextField(
+                              decoration: const InputDecoration(
+                                labelText: 'Enter "dice"',
+                              ),
+                              keyboardType: TextInputType.emailAddress,
+                              controller: controller,
+                              autofocus: true,
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            TextField(
+                              decoration: const InputDecoration(
+                                labelText: 'Enter Password',
+                              ),
+                              keyboardType: TextInputType.text,
+                              obscureText: true,
+                              controller: controller2,
+                              autofocus: true,
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                judge();
+                              },
+                              style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(Colors.pink),
+                                iconSize: MaterialStatePropertyAll(
+                                  30,
+                                ),
+                              ),
+                              child: const Icon(
+                                Icons.arrow_forward_rounded,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    child: Container(
-                      padding: const EdgeInsets.all(40),
-                      child: Column(
-                        children: [
-                          TextField(
-                            decoration: const InputDecoration(
-                              labelText: 'Enter "dice"',
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                            controller: controller,
-                            autofocus: true,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          TextField(
-                            decoration: const InputDecoration(
-                              labelText: 'Enter Password',
-                            ),
-                            keyboardType: TextInputType.text,
-                            obscureText: true,
-                            controller: controller2,
-                            autofocus: true,
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              judge();
-                            },
-                            style: const ButtonStyle(
-                              backgroundColor:
-                                  MaterialStatePropertyAll(Colors.pink),
-                              iconSize: MaterialStatePropertyAll(
-                                30,
-                              ),
-                            ),
-                            child: const Icon(Icons.arrow_forward_rounded),
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
