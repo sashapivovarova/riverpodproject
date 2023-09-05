@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:like_button/like_button.dart';
+import 'package:riverpodproject/page/weather_page.dart';
 import 'search_page.dart';
 import 'login_page.dart';
 import 'package:riverpodproject/model/model.dart';
@@ -161,7 +162,7 @@ class _MyPageState extends State<MyPage> {
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation1, animation2) =>
-                      const SecondPage(),
+                      const FifthPage(),
                   transitionDuration: Duration.zero,
                   reverseTransitionDuration: Duration.zero,
                 ),

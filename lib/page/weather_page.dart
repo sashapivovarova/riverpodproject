@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FifthPage extends StatefulWidget {
   const FifthPage({super.key});
@@ -54,7 +53,12 @@ class _FifthPageState extends State<FifthPage> {
       ),
       body: Builder(
         builder: (context) {
-          return const Center();
+          return Center(
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text('Get my location'),
+            ),
+          );
         },
       ),
     );
