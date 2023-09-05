@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
@@ -10,6 +12,15 @@ class ForthPage extends StatefulWidget {
 }
 
 class _ForthPageState extends State<ForthPage> {
+  int leftImage = 1;
+  int rightImage = 1;
+
+  void randomGame() {
+    leftImage = Random().nextInt(6) + 1;
+    rightImage = Random().nextInt(6) + 1;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +62,44 @@ class _ForthPageState extends State<ForthPage> {
             ),
           ),
         ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  'assets/$leftImage.png',
+                  width: 150,
+                ),
+                Image.asset(
+                  'assets/$rightImage.png',
+                  width: 150,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                randomGame();
+              },
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.pink),
+                iconSize: MaterialStatePropertyAll(
+                  50,
+                ),
+              ),
+              child: const Icon(
+                Icons.play_arrow_rounded,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
