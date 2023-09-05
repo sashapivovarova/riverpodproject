@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
 
@@ -15,10 +16,27 @@ class _ForthPageState extends State<ForthPage> {
   int leftImage = 1;
   int rightImage = 1;
 
-  void randomGame() {
+  void randomImage() {
     leftImage = Random().nextInt(6) + 1;
     rightImage = Random().nextInt(6) + 1;
+    showToast();
     setState(() {});
+  }
+
+  void showToast() {
+    String message = '';
+    if (leftImage == rightImage) {
+      message = 'Good job!';
+    } else {
+      message = 'Try again!';
+    }
+    Fluttertoast.showToast(
+      msg: message,
+      backgroundColor: Colors.pink,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.SNACKBAR,
+      fontSize: 25,
+    );
   }
 
   @override
@@ -85,7 +103,7 @@ class _ForthPageState extends State<ForthPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                randomGame();
+                randomImage();
               },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(Colors.pink),
