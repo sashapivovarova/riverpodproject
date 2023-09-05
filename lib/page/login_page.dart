@@ -184,6 +184,7 @@ class _ThirdPageState extends State<ThirdPage> {
                               ),
                               child: const Icon(
                                 Icons.arrow_forward_rounded,
+                                color: Colors.white,
                               ),
                             ),
                           ],
