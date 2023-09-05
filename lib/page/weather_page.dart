@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'search_page.dart';
+import 'package:geolocator/geolocator.dart';
 
 class FifthPage extends StatefulWidget {
   const FifthPage({super.key});
@@ -10,6 +11,12 @@ class FifthPage extends StatefulWidget {
 }
 
 class _FifthPageState extends State<FifthPage> {
+  void getLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
