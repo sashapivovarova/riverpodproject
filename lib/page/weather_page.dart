@@ -17,6 +17,7 @@ class _WeatherPageState extends State<WeatherPage> {
   String? cityName;
   int? temperature;
   String? formattedDate;
+  String? status;
 
   @override
   void initState() {
@@ -31,23 +32,12 @@ class _WeatherPageState extends State<WeatherPage> {
     cityName = cityName2.substring(startIndex).replaceAll('_', ' ');
     double temperature2 = weatherData['current']['temp'];
     temperature = temperature2.toInt();
+    status = weatherData['current']['weather'][0]['main'];
   }
 
   String getTime() {
-    DateTime datetime2 = DateTime.now();
-    String dateStr = datetime2.toString();
-    DateTime dateTime = DateTime.parse(dateStr);
-
-    String twoDigits(int n) {
-      if (n >= 10) {
-        return '$n';
-      } else {
-        return '0$n';
-      }
-    }
-
-    return formattedDate =
-        '${dateTime.year}-${twoDigits(dateTime.month)}-${twoDigits(dateTime.day)} ${twoDigits(dateTime.hour)}:${twoDigits(dateTime.minute)}';
+    var now = DateTime.now();
+    return formattedDate = DateFormat('h:mm a - EEE, d MMM').format(now);
   }
 
   @override
@@ -89,27 +79,83 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ],
       ),
-      body: Container(
-        child: Stack(
-          children: [
-            Column(
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '$cityName',
-                  style: GoogleFonts.lato(
-                    fontSize: 30,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    Text(
+                      '$cityName',
+                      style: GoogleFonts.lato(
+                        fontSize: 40,
+                      ),
+                    ),
+                    Text(
+                      '$formattedDate',
+                      style: GoogleFonts.lato(
+                        fontSize: 25,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                  ],
                 ),
-                Text(
-                  '$formattedDate',
-                  style: GoogleFonts.lato(
-                    fontSize: 30,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$temperature℃',
+                      style: GoogleFonts.lato(
+                        fontSize: 50,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/Cloud.svg',
+                          width: 100,
+                          height: 100,
+                        ),
+                        Text(
+                          '$status',
+                          style: GoogleFonts.lato(
+                            fontSize: 25,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                  ],
+                ),
+                const Column(
+                  children: [
+                    Divider(
+                      height: 15,
+                      thickness: 2,
+                      color: Colors.white30,
+                    ),
+                    Row(
+                      children: [],
+                    ),
+                  ],
                 ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
     );
   }
