@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'home_page.dart';
-import 'search_page.dart';
 
 class WeatherPage extends StatefulWidget {
   final parseWeatherData;
@@ -18,6 +17,8 @@ class _WeatherPageState extends State<WeatherPage> {
   int? temperature;
   String? formattedDate;
   String? status;
+  int? sunrise;
+  int? sunset;
 
   @override
   void initState() {
@@ -79,83 +80,64 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ],
       ),
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 100,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '$cityName',
+                    style: GoogleFonts.lato(
+                      fontSize: 40,
                     ),
-                    Text(
-                      '$cityName',
-                      style: GoogleFonts.lato(
-                        fontSize: 40,
-                      ),
+                  ),
+                  Text(
+                    '$formattedDate',
+                    style: GoogleFonts.lato(
+                      fontSize: 25,
                     ),
-                    Text(
-                      '$formattedDate',
-                      style: GoogleFonts.lato(
-                        fontSize: 25,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '$temperature℃',
-                      style: GoogleFonts.lato(
-                        fontSize: 50,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          'assets/Cloud.svg',
-                          width: 100,
-                          height: 100,
-                        ),
-                        Text(
-                          '$status',
-                          style: GoogleFonts.lato(
-                            fontSize: 25,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                  ],
-                ),
-                const Column(
-                  children: [
-                    Divider(
-                      height: 15,
-                      thickness: 2,
-                      color: Colors.white30,
-                    ),
-                    Row(
-                      children: [],
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Flexible(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '$temperature℃',
+                    style: GoogleFonts.lato(
+                      fontSize: 80,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/Cloud.svg',
+                        width: 100,
+                        height: 100,
+                      ),
+                      Text(
+                        '$status',
+                        style: GoogleFonts.lato(
+                          fontSize: 25,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
