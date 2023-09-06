@@ -5,6 +5,7 @@ import 'package:riverpodproject/page/home_page.dart';
 import 'package:riverpodproject/page/search_page.dart';
 import 'package:riverpodproject/page/login_page.dart';
 import 'package:riverpodproject/page/shopping_cart.dart';
+import 'package:riverpodproject/page/loding_page.dart';
 import 'package:riverpodproject/page/weather_page.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/third': (context) => const ThirdPage(),
         '/forth': (context) => const ForthPage(),
         '/fifth': (context) => const FifthPage(),
+        '/sixth': (context) => const WeatherPage(),
       },
     );
   }
