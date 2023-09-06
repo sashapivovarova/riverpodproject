@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:riverpodproject/model/my_location.dart';
-import 'package:riverpodproject/model/network.dart';
 import 'home_page.dart';
 import 'search_page.dart';
 
 class WeatherPage extends StatefulWidget {
-  const WeatherPage({super.key});
+  final parseWeatherData;
+  const WeatherPage({super.key, this.parseWeatherData});
 
   @override
   State<WeatherPage> createState() => _WeatherPageState();
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  String? cityName;
+  int? temperature;
+
   @override
   void initState() {
     super.initState();
+    updateData(widget.parseWeatherData);
+  }
+
+  void updateData(dynamic weatherData) {
+    cityName = weatherData['timezone'];
+    double temperature2 = weatherData['current']['temp'];
+    temperature = temperature2.toInt();
   }
 
   @override
@@ -58,22 +67,22 @@ class _WeatherPageState extends State<WeatherPage> {
           ),
         ],
       ),
-      body: const SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             children: [
               Text(
-                'City name',
-                style: TextStyle(
+                '$cityName',
+                style: const TextStyle(
                   fontSize: 30,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
-                'Temperature',
-                style: TextStyle(fontSize: 20),
+                '$temperature',
+                style: const TextStyle(fontSize: 20),
               ),
             ],
           ),
