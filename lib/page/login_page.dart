@@ -15,7 +15,7 @@ class ThirdPage extends StatefulWidget {
 class _ThirdPageState extends State<ThirdPage> {
   TextEditingController controller = TextEditingController();
   TextEditingController controller2 = TextEditingController();
-  bool isSignupScreen = true;
+  bool isLoginScreen = true;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +109,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             color: Colors.black),
                         children: [
                           TextSpan(
-                            text: isSignupScreen ? ' to Group Chat!' : ' back!',
+                            text: isLoginScreen ? ' back!' : ' to Group Chat!',
                             style: const TextStyle(
                               letterSpacing: 1,
                               fontSize: 25,
@@ -124,9 +124,9 @@ class _ThirdPageState extends State<ThirdPage> {
                       height: 5,
                     ),
                     Text(
-                      isSignupScreen
-                          ? 'Signup to continue'
-                          : 'Login to continue',
+                      isLoginScreen
+                          ? 'Login to continue'
+                          : 'Signup to continue',
                       style: const TextStyle(
                         letterSpacing: 1,
                         color: Colors.black,
@@ -147,7 +147,7 @@ class _ThirdPageState extends State<ThirdPage> {
               padding: const EdgeInsets.all(
                 20,
               ),
-              height: isSignupScreen ? 300 : 240,
+              height: isLoginScreen ? 240 : 300,
               width: MediaQuery.of(context).size.width - 40,
               margin: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -174,7 +174,7 @@ class _ThirdPageState extends State<ThirdPage> {
                         onTap: () {
                           setState(
                             () {
-                              isSignupScreen = false;
+                              isLoginScreen = true;
                             },
                           );
                         },
@@ -185,12 +185,12 @@ class _ThirdPageState extends State<ThirdPage> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: !isSignupScreen
+                                color: isLoginScreen
                                     ? Palette.activeColor
                                     : Palette.textColor1,
                               ),
                             ),
-                            if (!isSignupScreen)
+                            if (isLoginScreen)
                               Container(
                                 margin: const EdgeInsets.only(
                                   top: 3,
@@ -206,7 +206,7 @@ class _ThirdPageState extends State<ThirdPage> {
                         onTap: () {
                           setState(
                             () {
-                              isSignupScreen = true;
+                              isLoginScreen = false;
                             },
                           );
                         },
@@ -217,12 +217,12 @@ class _ThirdPageState extends State<ThirdPage> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: isSignupScreen
-                                    ? Palette.activeColor
-                                    : Palette.textColor1,
+                                color: !isLoginScreen
+                                    ? Palette.textColor1
+                                    : Palette.activeColor,
                               ),
                             ),
-                            if (isSignupScreen)
+                            if (!isLoginScreen)
                               Container(
                                 margin: const EdgeInsets.only(
                                   top: 3,
@@ -236,7 +236,7 @@ class _ThirdPageState extends State<ThirdPage> {
                       ),
                     ],
                   ),
-                  if (isSignupScreen)
+                  if (!isLoginScreen)
                     Container(
                       margin: const EdgeInsets.only(
                         top: 20,
@@ -362,7 +362,7 @@ class _ThirdPageState extends State<ThirdPage> {
                         ),
                       ),
                     ),
-                  if (!isSignupScreen)
+                  if (isLoginScreen)
                     Container(
                       margin: const EdgeInsets.only(
                         top: 20,
@@ -458,7 +458,7 @@ class _ThirdPageState extends State<ThirdPage> {
               milliseconds: 500,
             ),
             curve: Curves.easeIn,
-            top: isSignupScreen ? 480 : 420,
+            top: isLoginScreen ? 420 : 480,
             left: 0,
             right: 0,
             child: Center(
@@ -528,9 +528,9 @@ class _ThirdPageState extends State<ThirdPage> {
                           size: 30,
                         ),
                         label: Text(
-                          isSignupScreen
-                              ? 'Signup with Google'
-                              : 'Login with Google',
+                          isLoginScreen
+                              ? 'Login with Google'
+                              : 'Signup with Google',
                         ),
                       ),
                       const SizedBox(
@@ -551,9 +551,9 @@ class _ThirdPageState extends State<ThirdPage> {
                           size: 30,
                         ),
                         label: Text(
-                          isSignupScreen
-                              ? 'Signup with Facebook'
-                              : 'Login with Facebook',
+                          isLoginScreen
+                              ? 'Login with Facebook'
+                              : 'Signup with Facebook',
                         ),
                       ),
                       const SizedBox(
@@ -574,9 +574,9 @@ class _ThirdPageState extends State<ThirdPage> {
                           size: 30,
                         ),
                         label: Text(
-                          isSignupScreen
-                              ? 'Signup with Email'
-                              : 'Login with Email',
+                          isLoginScreen
+                              ? 'Login with Email'
+                              : 'Signup with Email',
                         ),
                       ),
                     ],
