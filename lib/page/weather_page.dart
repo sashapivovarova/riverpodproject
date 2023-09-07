@@ -50,114 +50,128 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('Weather'),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
-                pageBuilder: (context, animation1, animation2) =>
-                    const MyPage(),
-                transitionDuration: Duration.zero,
-                reverseTransitionDuration: Duration.zero,
-              ),
-            );
-          },
-          icon: const Icon(
-            Icons.home_outlined,
-          ),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xfffeb4cb),
+            Color(0xfffdeadb),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const SecondPage(),
-                  transitionDuration: Duration.zero,
-                  reverseTransitionDuration: Duration.zero,
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.search_rounded,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const ThirdPage(),
-                  transitionDuration: Duration.zero,
-                  reverseTransitionDuration: Duration.zero,
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.shopping_cart_outlined,
-            ),
-          ),
-        ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Flexible(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$cityName',
-                    style: GoogleFonts.lato(
-                      fontSize: 40,
-                    ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          title: const Text('Weather'),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const MyPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.home_outlined,
+            ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        const SecondPage(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
                   ),
-                  Text(
-                    '$formattedDate',
-                    style: GoogleFonts.lato(
-                      fontSize: 25,
-                    ),
-                  ),
-                ],
+                );
+              },
+              icon: const Icon(
+                Icons.search_rounded,
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$temperature℃',
-                    style: GoogleFonts.lato(
-                      fontSize: 80,
-                      color: Colors.black,
-                    ),
+            IconButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation1, animation2) =>
+                        const ThirdPage(),
+                    transitionDuration: Duration.zero,
+                    reverseTransitionDuration: Duration.zero,
                   ),
-                  Row(
-                    children: [
-                      icon!,
-                      Text(
-                        '$status',
-                        style: GoogleFonts.lato(
-                          fontSize: 25,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                );
+              },
+              icon: const Icon(
+                Icons.shopping_cart_outlined,
               ),
             ),
           ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Flexible(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$cityName',
+                      style: GoogleFonts.lato(
+                        fontSize: 40,
+                      ),
+                    ),
+                    Text(
+                      '$formattedDate',
+                      style: GoogleFonts.lato(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$temperature℃',
+                      style: GoogleFonts.lato(
+                        fontSize: 80,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        icon!,
+                        Text(
+                          '$status',
+                          style: GoogleFonts.lato(
+                            fontSize: 25,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
