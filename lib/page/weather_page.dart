@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'home_page.dart';
+import 'package:riverpodproject/model/weather.dart';
 
 class WeatherPage extends StatefulWidget {
   final parseWeatherData;
@@ -13,12 +14,15 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  Weather weather = Weather();
   String? cityName;
   int? temperature;
   String? formattedDate;
   String? status;
   int? sunrise;
   int? sunset;
+  int? condition;
+  Widget? icon;
 
   @override
   void initState() {
@@ -34,6 +38,8 @@ class _WeatherPageState extends State<WeatherPage> {
     double temperature2 = weatherData['current']['temp'];
     temperature = temperature2.toInt();
     status = weatherData['current']['weather'][0]['main'];
+    condition = weatherData['current']['weather'][0]['id'];
+    icon = weather.getWeatherIcon(condition!);
   }
 
   String getTime() {
@@ -119,11 +125,7 @@ class _WeatherPageState extends State<WeatherPage> {
                   ),
                   Row(
                     children: [
-                      SvgPicture.asset(
-                        'assets/Cloud.svg',
-                        width: 100,
-                        height: 100,
-                      ),
+                      icon!,
                       Text(
                         '$status',
                         style: GoogleFonts.lato(
