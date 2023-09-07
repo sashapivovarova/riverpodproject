@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Nutrition',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.pink,
       ),
       initialRoute: '/',
       routes: {
