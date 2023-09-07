@@ -582,7 +582,7 @@ class _ThirdPageState extends State<ThirdPage> {
               ),
             ),
             Positioned(
-              top: 600,
+              top: MediaQuery.of(context).size.height - 340,
               left: 0,
               right: 0,
               child: Builder(
