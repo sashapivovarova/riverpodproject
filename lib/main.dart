@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:riverpodproject/page/chat_page.dart';
 import 'package:riverpodproject/page/onboarding_page.dart';
 import 'package:riverpodproject/page/home_page.dart';
 import 'package:riverpodproject/page/search_page.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/forth': (context) => const ForthPage(),
         '/fifth': (context) => const FifthPage(),
         '/sixth': (context) => const WeatherPage(),
+        '/seventh': (context) => const ChatPage(),
       },
     );
   }
