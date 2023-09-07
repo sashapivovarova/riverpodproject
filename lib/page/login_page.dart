@@ -137,7 +137,11 @@ class _ThirdPageState extends State<ThirdPage> {
               ),
             ),
           ),
-          Positioned(
+          AnimatedPositioned(
+            duration: const Duration(
+              milliseconds: 500,
+            ),
+            curve: Curves.easeIn,
             top: 220,
             child: Container(
               padding: const EdgeInsets.all(
@@ -266,7 +270,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                     ),
                                   ),
                                 ),
-                                hintText: 'User name',
+                                hintText: 'ID',
                                 hintStyle: TextStyle(
                                   fontSize: 15,
                                   color: Palette.textColor1,
@@ -369,7 +373,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             TextFormField(
                               decoration: const InputDecoration(
                                 prefixIcon: Icon(
-                                  Icons.mail_rounded,
+                                  Icons.account_circle_rounded,
                                   color: Palette.iconColor,
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -392,7 +396,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                     ),
                                   ),
                                 ),
-                                hintText: 'Email',
+                                hintText: 'ID',
                                 hintStyle: TextStyle(
                                   fontSize: 15,
                                   color: Palette.textColor1,
@@ -449,7 +453,11 @@ class _ThirdPageState extends State<ThirdPage> {
               ),
             ),
           ),
-          Positioned(
+          AnimatedPositioned(
+            duration: const Duration(
+              milliseconds: 500,
+            ),
+            curve: Curves.easeIn,
             top: isSignupScreen ? 480 : 420,
             left: 0,
             right: 0,
@@ -519,8 +527,10 @@ class _ThirdPageState extends State<ThirdPage> {
                           FontAwesomeIcons.google,
                           size: 30,
                         ),
-                        label: const Text(
-                          'Login with Google',
+                        label: Text(
+                          isSignupScreen
+                              ? 'Signup with Google'
+                              : 'Login with Google',
                         ),
                       ),
                       const SizedBox(
@@ -540,8 +550,10 @@ class _ThirdPageState extends State<ThirdPage> {
                           FontAwesomeIcons.facebook,
                           size: 30,
                         ),
-                        label: const Text(
-                          'Login with Facebook',
+                        label: Text(
+                          isSignupScreen
+                              ? 'Signup with Facebook'
+                              : 'Login with Facebook',
                         ),
                       ),
                       const SizedBox(
@@ -561,8 +573,10 @@ class _ThirdPageState extends State<ThirdPage> {
                           FontAwesomeIcons.envelope,
                           size: 30,
                         ),
-                        label: const Text(
-                          'Login with Email',
+                        label: Text(
+                          isSignupScreen
+                              ? 'Signup with Email'
+                              : 'Login with Email',
                         ),
                       ),
                     ],
