@@ -24,7 +24,7 @@ class _ThirdPageState extends State<ThirdPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: const Text('Login'),
+        title: const Text('Chat'),
         leading: IconButton(
           onPressed: () {
             Navigator.pushReplacement(
@@ -83,7 +83,7 @@ class _ThirdPageState extends State<ThirdPage> {
             left: 0,
             right: 0,
             child: Container(
-              height: 300,
+              height: 400,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
@@ -101,16 +101,16 @@ class _ThirdPageState extends State<ThirdPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RichText(
-                      text: const TextSpan(
-                        text: 'Welcome to ',
-                        style: TextStyle(
+                      text: TextSpan(
+                        text: 'Welcome',
+                        style: const TextStyle(
                             letterSpacing: 1,
                             fontSize: 25,
                             color: Colors.black),
                         children: [
                           TextSpan(
-                            text: 'Group Chat!',
-                            style: TextStyle(
+                            text: isSignupScreen ? ' to Group Chat!' : ' back!',
+                            style: const TextStyle(
                               letterSpacing: 1,
                               fontSize: 25,
                               color: Colors.black,
@@ -123,9 +123,11 @@ class _ThirdPageState extends State<ThirdPage> {
                     const SizedBox(
                       height: 5,
                     ),
-                    const Text(
-                      'Signup to continue',
-                      style: TextStyle(
+                    Text(
+                      isSignupScreen
+                          ? 'Signup to continue'
+                          : 'Login to continue',
+                      style: const TextStyle(
                         letterSpacing: 1,
                         color: Colors.black,
                       ),
@@ -141,7 +143,7 @@ class _ThirdPageState extends State<ThirdPage> {
               padding: const EdgeInsets.all(
                 20,
               ),
-              height: 280,
+              height: isSignupScreen ? 300 : 240,
               width: MediaQuery.of(context).size.width - 40,
               margin: const EdgeInsets.symmetric(
                 horizontal: 20,
@@ -191,7 +193,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                 ),
                                 height: 2,
                                 width: 55,
-                                color: Colors.pink[200],
+                                color: Colors.pink,
                               ),
                           ],
                         ),
@@ -223,59 +225,280 @@ class _ThirdPageState extends State<ThirdPage> {
                                 ),
                                 height: 2,
                                 width: 58,
-                                color: Colors.pink[200],
+                                color: Colors.pink,
                               ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                      top: 15,
-                    ),
-                    child: Form(
-                      child: Column(
-                        children: [
-                          TextFormField(
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.account_circle_rounded,
-                                color: Palette.iconColor,
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Palette.textColor1,
+                  if (isSignupScreen)
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: 20,
+                      ),
+                      child: Form(
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.account_circle_rounded,
+                                  color: Palette.iconColor,
                                 ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(
-                                    35,
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
                                   color: Palette.textColor1,
                                 ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(
-                                    35,
-                                  ),
+                                contentPadding: EdgeInsets.all(
+                                  15,
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.mail_rounded,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                hintText: 'Email',
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Palette.textColor1,
+                                ),
+                                contentPadding: EdgeInsets.all(
+                                  15,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                hintText: 'Password',
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Palette.textColor1,
+                                ),
+                                contentPadding: EdgeInsets.all(
+                                  15,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  if (!isSignupScreen)
+                    Container(
+                      margin: const EdgeInsets.only(
+                        top: 20,
+                      ),
+                      child: Form(
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.mail_rounded,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                hintText: 'Email',
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Palette.textColor1,
+                                ),
+                                contentPadding: EdgeInsets.all(
+                                  15,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextFormField(
+                              decoration: const InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                  color: Palette.iconColor,
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Palette.textColor1,
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(
+                                      35,
+                                    ),
+                                  ),
+                                ),
+                                hintText: 'Password',
+                                hintStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Palette.textColor1,
+                                ),
+                                contentPadding: EdgeInsets.all(
+                                  15,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),
           ),
           Positioned(
+            top: isSignupScreen ? 480 : 420,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                height: 90,
+                width: 90,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xfffeb4cb),
+                        Color(0xfffdeadb),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(
+                      30,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 10,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_forward_rounded,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
             top: 600,
-            left: 65,
+            left: 0,
+            right: 0,
             child: Builder(
               builder: (context) {
                 return Center(
