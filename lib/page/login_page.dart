@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'home_page.dart';
 import 'search_page.dart';
+import 'loding_page.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
@@ -51,6 +52,22 @@ class _ThirdPageState extends State<ThirdPage> {
             },
             icon: const Icon(
               Icons.search_rounded,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const FifthPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              FontAwesomeIcons.cloudSunRain,
             ),
           ),
         ],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'home_page.dart';
 import 'package:riverpodproject/model/weather.dart';
+import 'home_page.dart';
+import 'search_page.dart';
+import 'login_page.dart';
 
 class WeatherPage extends StatefulWidget {
   final parseWeatherData;
@@ -50,9 +51,7 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
       appBar: AppBar(
-        backgroundColor: Colors.amber,
         automaticallyImplyLeading: false,
         title: const Text('Weather'),
         leading: IconButton(
@@ -73,15 +72,35 @@ class _WeatherPageState extends State<WeatherPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const SecondPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
             icon: const Icon(
-              Icons.near_me_rounded,
+              Icons.search_rounded,
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ThirdPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
             icon: const Icon(
-              Icons.location_on_rounded,
+              Icons.shopping_cart_outlined,
             ),
           ),
         ],

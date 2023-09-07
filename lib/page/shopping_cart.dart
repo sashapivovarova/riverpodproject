@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'home_page.dart';
 import 'search_page.dart';
+import 'loding_page.dart';
 
 class ForthPage extends StatefulWidget {
   const ForthPage({super.key});
@@ -76,6 +78,22 @@ class _ForthPageState extends State<ForthPage> {
             },
             icon: const Icon(
               Icons.search_rounded,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const FifthPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              FontAwesomeIcons.cloudSunRain,
             ),
           ),
         ],
