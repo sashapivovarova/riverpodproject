@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "743349386820",
+    "project_id": "chat-app-d7690",
+    "storage_bucket": "chat-app-d7690.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:743349386820:android:79985ec2a882d13f800611",
+        "android_client_info": {
+          "package_name": "com.example.riverpodproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "743349386820-fcppmq8rmd9fin4cja6vdnej60q9oio9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBp3n-KE6QF4t2c5g1PrViNdclv-tG-qVo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "743349386820-fcppmq8rmd9fin4cja6vdnej60q9oio9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

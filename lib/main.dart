@@ -8,6 +8,8 @@ import 'package:riverpodproject/page/login_page.dart';
 import 'package:riverpodproject/page/shopping_cart.dart';
 import 'package:riverpodproject/page/loding_page.dart';
 import 'package:riverpodproject/page/weather_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -18,8 +20,12 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-void main() {
+Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
