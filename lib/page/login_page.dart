@@ -271,6 +271,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                   onSaved: (value) {
                                     id = value!;
                                   },
+                                  onChanged: (value) {
+                                    id = value;
+                                  },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 4) {
                                       return 'Please enter at least 5.';
@@ -319,6 +322,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                 TextFormField(
                                   onSaved: (value) {
                                     email = value!;
+                                  },
+                                  onChanged: (value) {
+                                    email = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty ||
@@ -369,6 +375,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                 TextFormField(
                                   onSaved: (value) {
                                     password = value!;
+                                  },
+                                  onChanged: (value) {
+                                    password = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
@@ -429,6 +438,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                   onSaved: (value) {
                                     id = value!;
                                   },
+                                  onChanged: (value) {
+                                    id = value;
+                                  },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 4) {
                                       return 'Please enter at least 5 characters.';
@@ -477,6 +489,9 @@ class _ThirdPageState extends State<ThirdPage> {
                                 TextFormField(
                                   onSaved: (value) {
                                     password = value!;
+                                  },
+                                  onChanged: (value) {
+                                    password = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
