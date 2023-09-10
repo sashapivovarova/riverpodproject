@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:riverpodproject/config/palette.dart';
+import 'package:riverpodproject/model/palette.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:riverpodproject/page/chat_page.dart';
 import 'home_page.dart';
 import 'search_page.dart';
 import 'loding_page.dart';
@@ -16,10 +18,11 @@ class _ThirdPageState extends State<ThirdPage> {
   TextEditingController controller = TextEditingController();
   TextEditingController controller2 = TextEditingController();
   bool isLoginScreen = true;
-  String id = '';
-  String email = '';
-  String password = '';
+  String userId = '';
+  String userEmail = '';
+  String userPassword = '';
   final _formKey = GlobalKey<FormState>();
+  final _authentication = FirebaseAuth.instance;
 
   void _tryVaildation() {
     final isVaild = _formKey.currentState!.validate();
@@ -269,10 +272,10 @@ class _ThirdPageState extends State<ThirdPage> {
                               children: [
                                 TextFormField(
                                   onSaved: (value) {
-                                    id = value!;
+                                    userId = value!;
                                   },
                                   onChanged: (value) {
-                                    id = value;
+                                    userId = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 4) {
@@ -321,10 +324,11 @@ class _ThirdPageState extends State<ThirdPage> {
                                 ),
                                 TextFormField(
                                   onSaved: (value) {
-                                    email = value!;
+                                    userEmail = value!;
                                   },
+                                  keyboardType: TextInputType.emailAddress,
                                   onChanged: (value) {
-                                    email = value;
+                                    userEmail = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty ||
@@ -374,10 +378,11 @@ class _ThirdPageState extends State<ThirdPage> {
                                 ),
                                 TextFormField(
                                   onSaved: (value) {
-                                    password = value!;
+                                    userPassword = value!;
                                   },
+                                  obscureText: true,
                                   onChanged: (value) {
-                                    password = value;
+                                    userPassword = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
@@ -436,10 +441,10 @@ class _ThirdPageState extends State<ThirdPage> {
                               children: [
                                 TextFormField(
                                   onSaved: (value) {
-                                    id = value!;
+                                    userId = value!;
                                   },
                                   onChanged: (value) {
-                                    id = value;
+                                    userId = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 4) {
@@ -488,10 +493,11 @@ class _ThirdPageState extends State<ThirdPage> {
                                 ),
                                 TextFormField(
                                   onSaved: (value) {
-                                    password = value!;
+                                    userPassword = value!;
                                   },
+                                  obscureText: true,
                                   onChanged: (value) {
-                                    password = value;
+                                    userPassword = value;
                                   },
                                   validator: (value) {
                                     if (value!.isEmpty || value.length < 6) {
@@ -562,8 +568,43 @@ class _ThirdPageState extends State<ThirdPage> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: GestureDetector(
-                    onTap: () {
-                      _tryVaildation();
+                    onTap: () async {
+                      if (!isLoginScreen) {
+                        _tryVaildation();
+
+                        try {
+                          final newUser = await _authentication
+                              .createUserWithEmailAndPassword(
+                            email: userEmail,
+                            password: userPassword,
+                          );
+
+                          debugPrint('$newUser');
+
+                          if (newUser.user != null) {
+                            Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        const ChatPage(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          }
+                        } catch (e) {
+                          debugPrint('Exceptional Error!');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Please check your information!',
+                              ),
+                              backgroundColor: Colors.teal,
+                            ),
+                          );
+                        }
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -683,19 +724,4 @@ class _ThirdPageState extends State<ThirdPage> {
       ),
     );
   }
-}
-
-void showSnackBar(BuildContext context) {
-  const snackBar = SnackBar(
-    backgroundColor: Colors.teal,
-    duration: Duration(
-      seconds: 2,
-    ),
-    content: Text(
-      'I think the information doesn\'t match!',
-      textAlign: TextAlign.center,
-    ),
-  );
-
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
