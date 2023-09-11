@@ -18,7 +18,7 @@ class _ThirdPageState extends State<ThirdPage> {
   TextEditingController controller = TextEditingController();
   TextEditingController controller2 = TextEditingController();
   bool isLoginScreen = true;
-  String userId = '';
+  String userName = '';
   String userEmail = '';
   String userPassword = '';
   final _formKey = GlobalKey<FormState>();
@@ -272,14 +272,14 @@ class _ThirdPageState extends State<ThirdPage> {
                               children: [
                                 TextFormField(
                                   onSaved: (value) {
-                                    userId = value!;
+                                    userName = value!;
                                   },
                                   onChanged: (value) {
-                                    userId = value;
+                                    userName = value;
                                   },
                                   validator: (value) {
-                                    if (value!.isEmpty || value.length < 4) {
-                                      return 'Please enter at least 5.';
+                                    if (value!.isEmpty) {
+                                      return 'Please enter your name.';
                                     }
                                     return null;
                                   },
@@ -309,7 +309,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                         ),
                                       ),
                                     ),
-                                    hintText: 'ID',
+                                    hintText: 'Name',
                                     hintStyle: TextStyle(
                                       fontSize: 15,
                                       color: Palette.textColor1,
@@ -441,14 +441,14 @@ class _ThirdPageState extends State<ThirdPage> {
                               children: [
                                 TextFormField(
                                   onSaved: (value) {
-                                    userId = value!;
+                                    userEmail = value!;
                                   },
                                   onChanged: (value) {
-                                    userId = value;
+                                    userEmail = value;
                                   },
                                   validator: (value) {
-                                    if (value!.isEmpty || value.length < 4) {
-                                      return 'Please enter at least 5 characters.';
+                                    if (value!.isEmpty) {
+                                      return 'Please enter your email address.';
                                     }
                                     return null;
                                   },
@@ -478,7 +478,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                         ),
                                       ),
                                     ),
-                                    hintText: 'ID',
+                                    hintText: 'Email',
                                     hintStyle: TextStyle(
                                       fontSize: 15,
                                       color: Palette.textColor1,
@@ -575,6 +575,31 @@ class _ThirdPageState extends State<ThirdPage> {
                         try {
                           final newUser = await _authentication
                               .createUserWithEmailAndPassword(
+                            email: userEmail,
+                            password: userPassword,
+                          );
+                          if (newUser.user != null) {
+                            Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        const ChatPage(),
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              ),
+                            );
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      }
+                      if (isLoginScreen) {
+                        _tryVaildation();
+
+                        try {
+                          final newUser =
+                              await _authentication.signInWithEmailAndPassword(
                             email: userEmail,
                             password: userPassword,
                           );
