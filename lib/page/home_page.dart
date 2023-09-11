@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:like_button/like_button.dart';
 import 'package:riverpodproject/model/model.dart';
-import 'package:riverpodproject/page/chat_page.dart';
 import 'loding_page.dart';
 import 'search_page.dart';
 import 'login_page.dart';
@@ -141,22 +140,6 @@ class _MyPageState extends State<MyPage> {
         automaticallyImplyLeading: false,
         title: const Text('Home'),
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                PageRouteBuilder(
-                  pageBuilder: (context, animation1, animation2) =>
-                      const ChatPage(),
-                  transitionDuration: Duration.zero,
-                  reverseTransitionDuration: Duration.zero,
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.chat_bubble_rounded,
-            ),
-          ),
           IconButton(
             onPressed: () {
               Navigator.pushReplacement(
