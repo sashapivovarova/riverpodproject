@@ -26,7 +26,7 @@ class _ChatPageState extends State<ChatPage> {
         debugPrint('${loggedUser!.email}');
       }
     } catch (e) {
-      debugPrint('Exceptional Error!');
+      print(e);
     }
   }
 

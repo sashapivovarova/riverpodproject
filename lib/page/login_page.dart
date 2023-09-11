@@ -578,9 +578,6 @@ class _ThirdPageState extends State<ThirdPage> {
                             email: userEmail,
                             password: userPassword,
                           );
-
-                          debugPrint('$newUser');
-
                           if (newUser.user != null) {
                             Navigator.pushReplacement(
                               context,
@@ -594,15 +591,7 @@ class _ThirdPageState extends State<ThirdPage> {
                             );
                           }
                         } catch (e) {
-                          debugPrint('Exceptional Error!');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Please check your information!',
-                              ),
-                              backgroundColor: Colors.teal,
-                            ),
-                          );
+                          print(e);
                         }
                       }
                     },
