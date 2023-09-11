@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpodproject/page/login_page.dart';
@@ -57,6 +58,37 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
         ],
+      ),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection(
+              '/chats/Zkbo6z9ZTaCUcMS7NpMJ/message',
+            )
+            .snapshots(),
+        builder: (BuildContext context,
+            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          final docs = snapshot.data!.docs;
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              return Container(
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  docs[index]['text'],
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              );
+            },
+            itemCount: docs.length,
+          );
+        },
       ),
     );
   }
