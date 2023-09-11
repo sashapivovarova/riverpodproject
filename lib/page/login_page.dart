@@ -455,7 +455,7 @@ class _ThirdPageState extends State<ThirdPage> {
                                   key: const ValueKey(4),
                                   decoration: const InputDecoration(
                                     prefixIcon: Icon(
-                                      Icons.account_circle_rounded,
+                                      Icons.mail_rounded,
                                       color: Palette.iconColor,
                                     ),
                                     enabledBorder: OutlineInputBorder(
