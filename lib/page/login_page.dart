@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:riverpodproject/model/palette.dart';
@@ -578,6 +579,17 @@ class _ThirdPageState extends State<ThirdPage> {
                             email: userEmail,
                             password: userPassword,
                           );
+
+                          await FirebaseFirestore.instance
+                              .collection('user')
+                              .doc(newUser.user!.uid)
+                              .set(
+                            {
+                              'userName': userName,
+                              'email': userEmail,
+                            },
+                          );
+
                           if (newUser.user != null) {
                             Navigator.pushReplacement(
                               context,
