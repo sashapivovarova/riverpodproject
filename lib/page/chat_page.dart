@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:riverpodproject/page/login_page.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -37,6 +38,25 @@ class _ChatPageState extends State<ChatPage> {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: const Text('Chat'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _authentication.signOut();
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ThirdPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.logout_rounded,
+            ),
+          ),
+        ],
       ),
     );
   }
