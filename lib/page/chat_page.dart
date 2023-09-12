@@ -61,6 +61,10 @@ class _ChatPageState extends State<ChatPage> {
           ],
         ),
         body: Container(
+          margin: const EdgeInsets.only(
+            bottom: 15,
+          ),
+          padding: const EdgeInsets.all(8),
           child: const Column(
             children: [
               Expanded(
