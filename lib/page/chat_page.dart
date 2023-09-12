@@ -1,7 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpodproject/chatting/chat/message.dart';
+import 'package:riverpodproject/chatting/chat/new_message.dart';
 import 'package:riverpodproject/page/login_page.dart';
 
 class ChatPage extends StatefulWidget {
@@ -66,6 +66,7 @@ class _ChatPageState extends State<ChatPage> {
               Expanded(
                 child: Messages(),
               ),
+              NewMessage(),
             ],
           ),
         ));
