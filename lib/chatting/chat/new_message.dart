@@ -9,7 +9,7 @@ class NewMessage extends StatefulWidget {
 }
 
 class _NewMessageState extends State<NewMessage> {
-  final _userEnterMessage = '';
+  var _userEnterMessage = '';
 
   void _sendMessage() {
     FocusScope.of(context).unfocus();
@@ -36,7 +36,7 @@ class _NewMessageState extends State<NewMessage> {
               ),
               onChanged: (value) {
                 setState(() {
-                  if (_userEnterMessage == value) {}
+                  _userEnterMessage = value;
                 });
               },
             ),
