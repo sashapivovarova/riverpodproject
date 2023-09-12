@@ -10,12 +10,15 @@ class NewMessage extends StatefulWidget {
 
 class _NewMessageState extends State<NewMessage> {
   var _userEnterMessage = '';
+  final _controller = TextEditingController();
 
   void _sendMessage() {
     FocusScope.of(context).unfocus();
     FirebaseFirestore.instance.collection('chat').add({
       'text': _userEnterMessage,
+      'time': Timestamp.now(),
     });
+    _controller.clear();
   }
 
   @override
@@ -31,6 +34,7 @@ class _NewMessageState extends State<NewMessage> {
         children: [
           Expanded(
             child: TextField(
+              controller: _controller,
               decoration: const InputDecoration(
                 labelText: 'Send a message',
               ),
