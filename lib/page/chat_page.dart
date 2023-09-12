@@ -36,43 +36,44 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          title: const Text('Chat'),
-          actions: [
-            IconButton(
-              onPressed: () {
-                _authentication.signOut();
-                Navigator.pushReplacement(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) =>
-                        const ThirdPage(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero,
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.logout_rounded,
-              ),
+      appBar: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        title: const Text('Chat'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _authentication.signOut();
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ThirdPage(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.logout_rounded,
             ),
+          ),
+        ],
+      ),
+      body: Container(
+        margin: const EdgeInsets.only(
+          bottom: 15,
+        ),
+        padding: const EdgeInsets.all(8),
+        child: const Column(
+          children: [
+            Expanded(
+              child: Messages(),
+            ),
+            NewMessage(),
           ],
         ),
-        body: Container(
-          margin: const EdgeInsets.only(
-            bottom: 15,
-          ),
-          padding: const EdgeInsets.all(8),
-          child: const Column(
-            children: [
-              Expanded(
-                child: Messages(),
-              ),
-              NewMessage(),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }

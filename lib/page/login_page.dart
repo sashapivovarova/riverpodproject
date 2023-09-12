@@ -604,6 +604,19 @@ class _ThirdPageState extends State<ThirdPage> {
                           }
                         } catch (e) {
                           print(e);
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Please check your information',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                backgroundColor: Colors.teal,
+                              ),
+                            );
+                          }
                         }
                       }
                       if (isLoginScreen) {
@@ -629,6 +642,19 @@ class _ThirdPageState extends State<ThirdPage> {
                           }
                         } catch (e) {
                           print(e);
+                          if (mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Please check your information',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                backgroundColor: Colors.pink,
+                              ),
+                            );
+                          }
                         }
                       }
                     },
