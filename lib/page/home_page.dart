@@ -115,9 +115,21 @@ class _MyPageState extends State<MyPage> {
                           user.name,
                         ),
                         content: Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               user.phone,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.close_rounded,
+                              ),
                             ),
                           ],
                         ),
