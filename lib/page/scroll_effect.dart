@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/home_page.dart';
-import 'package:riverpodproject/page/image_widget.dart';
+import 'package:riverpodproject/model/image_widget.dart';
 
 class ScrollEffect extends StatelessWidget {
   const ScrollEffect({super.key});
@@ -12,7 +12,7 @@ class ScrollEffect extends StatelessWidget {
         slivers: [
           SliverAppBar(
             title: const Text(
-              'Sliver Appbar',
+              'Sliver Page',
             ),
             expandedHeight: 200,
             leading: IconButton(
@@ -31,24 +31,6 @@ class ScrollEffect extends StatelessWidget {
                 Icons.home_outlined,
               ),
             ),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) =>
-                          const ScrollEffect(),
-                      transitionDuration: Duration.zero,
-                      reverseTransitionDuration: Duration.zero,
-                    ),
-                  );
-                },
-                icon: const Icon(
-                  Icons.mouse_rounded,
-                ),
-              ),
-            ],
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
                 'https://source.unsplash.com/random?sig=100',

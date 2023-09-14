@@ -55,7 +55,7 @@ class _MyPageState extends State<MyPage> {
               );
             },
             icon: const Icon(
-              Icons.mouse_rounded,
+              Icons.photo,
             ),
           ),
           IconButton(
