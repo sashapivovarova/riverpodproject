@@ -14,7 +14,6 @@ class ScrollEffect extends StatelessWidget {
             title: const Text(
               'Sliver Appbar',
             ),
-            backgroundColor: Colors.blueGrey,
             expandedHeight: 200,
             leading: IconButton(
               onPressed: () {
@@ -51,8 +50,8 @@ class ScrollEffect extends StatelessWidget {
               ),
             ],
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'assets/background.jpg',
+              background: Image.network(
+                'https://source.unsplash.com/random?sig=100',
                 fit: BoxFit.cover,
               ),
             ),
@@ -66,7 +65,9 @@ class ScrollEffect extends StatelessWidget {
               shrinkWrap: true,
               itemCount: 20,
               itemBuilder: (context, index) {
-                return ImageWidget(index: index);
+                return ImageWidget(
+                  index: index,
+                );
               },
             ),
           ),
