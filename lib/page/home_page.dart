@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:riverpodproject/model/service.dart';
-import 'package:riverpodproject/model/user.dart';
 import 'package:riverpodproject/page/scroll_effect.dart';
 import 'loding_page.dart';
 import 'search_page.dart';
@@ -15,32 +13,16 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  bool isLiked = false;
-  int likeCount = 0;
-  List<User> _user = <User>[];
-  bool loading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    Services.getInfo().then(
-      (value) {
-        setState(
-          () {
-            _user = value;
-            loading = true;
-          },
-        );
-      },
-    );
-  }
+  int _seletedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(loading ? 'User' : 'loading...'),
+        title: const Text(
+          'Home',
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -108,57 +90,42 @@ class _MyPageState extends State<MyPage> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: _user.length,
-        itemBuilder: (context, index) {
-          User user = _user[index];
-          return ListTile(
-            leading: const Icon(
-              Icons.account_circle_rounded,
-              color: Colors.grey,
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(
+            icon: const Icon(Icons.photo),
+            label: 'Pic',
+            selectedIcon: Icon(
+              Icons.photo,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
-            trailing: IconButton(
-              icon: const Icon(
-                Icons.smartphone_rounded,
-                color: Colors.red,
-              ),
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text(
-                          user.name,
-                        ),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              user.phone,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(
-                                Icons.close_rounded,
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    });
-              },
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.search_rounded),
+            label: 'Search',
+            selectedIcon: Icon(
+              Icons.search_rounded,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
-            title: Text(user.name),
-            subtitle: Text(
-              user.email,
+          ),
+          NavigationDestination(
+            icon: const Icon(FontAwesomeIcons.cloudSunRain),
+            label: 'Weather',
+            selectedIcon: Icon(
+              FontAwesomeIcons.cloudSunRain,
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
             ),
-          );
-        },
+          ),
+        ],
+        selectedIndex: _seletedIndex,
+        onDestinationSelected: (value) => setState(
+          () {
+            _seletedIndex = value;
+          },
+        ),
+        animationDuration: const Duration(
+          milliseconds: 500,
+        ),
       ),
     );
   }
