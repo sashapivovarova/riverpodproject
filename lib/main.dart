@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpodproject/page/chat_page.dart';
 import 'package:riverpodproject/page/onboarding_page.dart';
 import 'package:riverpodproject/page/home_page.dart';
+import 'package:riverpodproject/page/scroll_effect.dart';
 import 'package:riverpodproject/page/search_page.dart';
 import 'package:riverpodproject/page/login_page.dart';
 import 'package:riverpodproject/page/shopping_cart.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         '/fifth': (context) => const FifthPage(),
         '/sixth': (context) => const WeatherPage(),
         '/seventh': (context) => const ChatPage(),
+        '/scroll': (context) => const ScrollEffect(),
       },
     );
   }

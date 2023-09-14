@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:like_button/like_button.dart';
 import 'package:riverpodproject/model/service.dart';
 import 'package:riverpodproject/model/user.dart';
+import 'package:riverpodproject/page/scroll_effect.dart';
 import 'loding_page.dart';
 import 'search_page.dart';
 import 'login_page.dart';
@@ -42,6 +42,22 @@ class _MyPageState extends State<MyPage> {
         automaticallyImplyLeading: false,
         title: Text(loading ? 'User' : 'loading...'),
         actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) =>
+                      const ScrollEffect(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.mouse_rounded,
+            ),
+          ),
           IconButton(
             onPressed: () {
               Navigator.pushReplacement(
